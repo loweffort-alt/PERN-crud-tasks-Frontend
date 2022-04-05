@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TaskList = () => {
 
@@ -16,6 +17,8 @@ const TaskList = () => {
       loadTasks()
     }
   }, [] );
+
+  const navigate = useNavigate();
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
@@ -36,7 +39,6 @@ const TaskList = () => {
             style={{
               marginBottom: '0.5rem',
               backgroundColor: '#1e272e',
-              color: 'white'
             }}
           >
             <CardContent style={{
@@ -45,12 +47,25 @@ const TaskList = () => {
               }}>
 
               <div>
-                <Typography>{task.title}</Typography>
-                <Typography>{task.description}</Typography>
+                <Typography color='white'>{task.title}</Typography>
+                <Typography color='white'>{task.description}</Typography>
               </div>
               <div>
-                <Button variant='contained' color='inherit' onClick={ () => console.log('EDitando') }>Edit</Button>
-                <Button variant='contained' color='warning' onClick={ (e) => handleDelete(e, task.id) }>Delete</Button>
+                <Button 
+                  variant='contained' 
+                  color='inherit' 
+                  onClick={ () => navigate(`/tasks/new/${task.id}`)}
+                >
+                  Edit
+                </Button>
+                <Button 
+                  variant='contained' 
+                  color='warning' 
+                  onClick={ (e) => handleDelete(e, task.id) } 
+                  style={{ marginLeft: '.5rem' }}
+                >
+                  Delete
+                </Button>
               </div>
 
             </CardContent>
