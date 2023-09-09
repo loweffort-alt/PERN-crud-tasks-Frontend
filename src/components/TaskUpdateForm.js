@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { backend_url } from "../db";
+import { backend_url, initial_path } from "../db";
 
 const TaskUpdateForm = () => {
   const navigate = useNavigate();
@@ -47,9 +47,10 @@ const TaskUpdateForm = () => {
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
+    console.log(data);
     setLoading(false);
 
-    navigate("/");
+    navigate(initial_path);
   };
 
   return (

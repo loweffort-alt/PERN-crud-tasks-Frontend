@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { backend_url } from "../db";
+import { backend_url, initial_path } from "../db";
 
 const TaskForm = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const TaskForm = () => {
 
     setLoading(false);
 
-    navigate("/");
+    navigate(`${initial_path}/`);
   };
 
   return (

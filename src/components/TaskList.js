@@ -1,7 +1,7 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { backend_url } from "../db";
+import { backend_url, initial_path } from "../db";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -20,6 +20,7 @@ const TaskList = () => {
 
   useEffect(() => {
     console.log(tasks);
+    console.log("asdfsdf");
     if (tasks.length === 0) {
       loadTasks();
     }
@@ -64,7 +65,9 @@ const TaskList = () => {
                 <Button
                   variant="contained"
                   color="inherit"
-                  onClick={() => navigate(`/tasks/new/${task.id}`)}
+                  onClick={() =>
+                    navigate(`${initial_path}/tasks/new/${task.id}`)
+                  }
                 >
                   Edit
                 </Button>
